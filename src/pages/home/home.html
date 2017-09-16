@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar></ion-searchbar>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="articleTab">
+      <ion-segment-button value="dt">动态</ion-segment-button>
+      <ion-segment-button value="rm">热门</ion-segment-button>
+      <ion-segment-button value="fx">发现</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div [ngSwitch]="articleTab">
+      <ion-list *ngSwitchCase="'dt'">
+        <ion-item *ngFor="let atd of articledata" (click)="readArticle(atd.content.rendered,atd.title.rendered)">{{atd.title.rendered}}</ion-item>
+      </ion-list>
+      <ion-list *ngSwitchCase="'rm'">
+        <ion-item>实例-热门</ion-item>
+      </ion-list>
+      <ion-list *ngSwitchCase="'fx'">
+        <ion-item>实例-发现</ion-item>
+      </ion-list>
+    </div>
+
+</ion-content>
